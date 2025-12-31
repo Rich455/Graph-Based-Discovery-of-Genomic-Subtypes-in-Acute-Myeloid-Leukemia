@@ -141,6 +141,9 @@ Green arrows indicate that the presence of one mutation significantly increases 
 This network accurately recapitulates the major molecular subclasses of AML as defined in current clinical guidelines (ELN 2022, ICC).
 
 
+![Alt text describing the image](https://github.com/Rich455/AML-Genomic-Subtyping-with-Graphs-Causality/blob/main/Significant%20Co-occurrence%20Network%20of%20Gene%20Mutations.png)
+
+
 ⚠️ Limitations
 
 Cross-sectional data → associations, not true temporal causality
