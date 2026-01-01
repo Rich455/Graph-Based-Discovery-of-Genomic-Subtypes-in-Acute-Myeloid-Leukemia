@@ -158,7 +158,7 @@ This network accurately recapitulates the major molecular subclasses of AML as d
 
 
 
-### Causal**
+###Causal
 
 Key Outcomes from Your Run
 
@@ -177,7 +177,7 @@ Weaker pairs (e.g., IDH1 ↔ NPM1, OR ~1.3–1.4x) — still positive but less s
 ---
 
 
-## Biological Implications
+##Biological Implications
 
 Cooperative mutations: Strong pairs show pathway-level cooperation (e.g., NPM1 + FLT3-ITD + DNMT3A define a common AML subtype).
 
@@ -205,7 +205,7 @@ Reverse: Predict src from tgt.
 
 ---
 
-## Limitations
+##Limitations
 
 Cross-sectional data → associations, not true temporal causality
 
