@@ -51,7 +51,7 @@ Data are simulated for methodological demonstration, not direct clinical inferen
 ---
 
 
-** 1. Co-occurrence Network (Graph-Based View)**
+**1. Co-occurrence Network (Graph-Based View)**
 What does the graph represent?
 
 Nodes (dots) → Gene mutations
