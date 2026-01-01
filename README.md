@@ -115,7 +115,9 @@ These communities emerge automatically, without predefined labels — showing th
 
 
 
-### 4. AML Mutation Co-occurrence Network
+
+ **4. AML Mutation Co-occurrence Network**
+
 
 This directed graph shows **strong and statistically significant positive co-occurrences** among recurrent mutations in Acute Myeloid Leukemia (AML), based on logistic regression and Fisher's exact test (Bonferroni-corrected).
 
@@ -158,7 +160,7 @@ This network accurately recapitulates the major molecular subclasses of AML as d
 
 
 
-###Causal
+**Causal**
 
 Key Outcomes from Your Run
 
@@ -177,7 +179,7 @@ Weaker pairs (e.g., IDH1 ↔ NPM1, OR ~1.3–1.4x) — still positive but less s
 ---
 
 
-##Biological Implications
+**Biological Implications**
 
 Cooperative mutations: Strong pairs show pathway-level cooperation (e.g., NPM1 + FLT3-ITD + DNMT3A define a common AML subtype).
 
@@ -205,7 +207,7 @@ Reverse: Predict src from tgt.
 
 ---
 
-##Limitations
+**Limitations**
 
 Cross-sectional data → associations, not true temporal causality
 
