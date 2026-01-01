@@ -6,6 +6,8 @@ This project explores acute myeloid leukemia (AML) genomic subtypes using a grap
 Blood (2021) https://ashpublications.org/blood/article-abstract/138/19/1885/476049
 
 Instead of using traditional supervised classifiers alone, this project takes a network-driven perspective to understand how mutations co-occur, cluster, and define biological AML subtypes.
+---
+
 
 
 
@@ -20,6 +22,9 @@ Which mutations tend to appear together in the same patients?
 Can we automatically identify mutation communities (subtypes)?
 
 Which mutations show strong positive or negative (exclusive) relationships?
+
+---
+
 
 
  **Data**
@@ -46,7 +51,7 @@ Data are simulated for methodological demonstration, not direct clinical inferen
 ---
 
 
-** 🔗 1. Co-occurrence Network (Graph-Based View)**
+** 1. Co-occurrence Network (Graph-Based View)**
 What does the graph represent?
 
 Nodes (dots) → Gene mutations
@@ -76,7 +81,7 @@ Trade-off: rare but real relationships may be missed — this is intentional to 
 
 ---
 
-2. **Automatic Mutation Community Detection**
+**2. Automatic Mutation Community Detection**
 
 Which mutations tend to cluster together as a group across the entire dataset?
 
@@ -99,6 +104,8 @@ Isolated metabolic subtype
 (IDH1)
 
 These communities emerge automatically, without predefined labels — showing that graph structure alone recovers known AML subtypes.
+---
+
 
 
 
@@ -108,7 +115,7 @@ These communities emerge automatically, without predefined labels — showing th
 
 
 
-### AML Mutation Co-occurrence Network
+### 4. AML Mutation Co-occurrence Network
 
 This directed graph shows **strong and statistically significant positive co-occurrences** among recurrent mutations in Acute Myeloid Leukemia (AML), based on logistic regression and Fisher's exact test (Bonferroni-corrected).
 
@@ -130,6 +137,9 @@ Green arrows indicate that the presence of one mutation significantly increases 
 
 This network accurately recapitulates the major molecular subclasses of AML as defined in current clinical guidelines (ELN 2022, ICC).
 
+---
+
+
 
 ![Alt text describing the image](https://github.com/Rich455/AML-Genomic-Subtyping-with-Graphs-Causality/blob/main/Significant%20Co-occurrence%20Network%20of%20Gene%20Mutations.png)
 
@@ -148,26 +158,37 @@ This network accurately recapitulates the major molecular subclasses of AML as d
 
 
 
-###Causal**
+### Causal**
 
 Key Outcomes from Your Run
 
 Total positive directed relationships: Likely hundreds (exact number printed at the end).
+
 Strongest pairs (examples from typical AML data):
+
 TP53 → Complex_Karyotype (OR ≈ 10.5x) — if TP53 is mutated, complex karyotype is ~10 times more likely (and vice versa).
+
 NPM1 ↔ FLT3_ITD ↔ DNMT3A (OR ~8–9x) — classic triple mutant AML (favorable/intermediate risk).
+
 Splicing factors (SRSF2 ↔ U2AF1 ↔ ASXL1 ↔ RUNX1) — strong cluster (OR ~6–9x).
+
 Weaker pairs (e.g., IDH1 ↔ NPM1, OR ~1.3–1.4x) — still positive but less strong.
 
 ---
 
 
-Biological Implications
+## Biological Implications
 
 Cooperative mutations: Strong pairs show pathway-level cooperation (e.g., NPM1 + FLT3-ITD + DNMT3A define a common AML subtype).
+
 Bidirectional symmetry: Most strong pairs are symmetric because mutations co-occur tightly in the same clone — no clear "who came first" from bulk data.
+
 Clinical relevance: Highlights prognostic subgroups (NPM1-centered favorable vs. TP53/CK adverse).
+
 Discovery tool: Shows the full landscape of cooperating mutations — useful for hypothesis generation before applying strict filters (e.g., Bonferroni).
+
+---
+
 
 Short Explanation of How the Code Works
 
@@ -177,15 +198,14 @@ Fit two logistic regressions:
 Forward: Predict tgt from src.
 Reverse: Predict src from tgt.
 
-Calculate coefficient (log-odds) and odds ratio (exp(coef)).
-Keep if positive (>0) — meaning co-occurrence.
-Add Fisher's p-value for reference.
-Sort by strength and print all results.
+
 ---
 
 ![Alt text describing the image](https://github.com/Rich455/AML-Genomic-Subtyping-with-Graphs-Causality/blob/main/Causal%20Strength.png)
 
-⚠️ Limitations
+---
+
+## Limitations
 
 Cross-sectional data → associations, not true temporal causality
 
