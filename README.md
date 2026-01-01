@@ -9,7 +9,7 @@ Instead of using traditional supervised classifiers alone, this project takes a 
 
 
 
- Core Idea
+ **Core Idea**
 
 AML is not driven by single mutations, but by combinations of cooperating mutations that define distinct disease entities.
 
@@ -22,7 +22,7 @@ Can we automatically identify mutation communities (subtypes)?
 Which mutations show strong positive or negative (exclusive) relationships?
 
 
- Data
+ **Data**
 
 Source: Simulated AML mutation matrix derived from TCGA-LAML (Genomic Data Commons, NCI)
 
@@ -43,8 +43,10 @@ CEBPA (biallelic)
 
 Data are simulated for methodological demonstration, not direct clinical inference.
 
+---
 
-🔗 1. Co-occurrence Network (Graph-Based View)
+
+** 🔗 1. Co-occurrence Network (Graph-Based View)**
 What does the graph represent?
 
 Nodes (dots) → Gene mutations
@@ -59,7 +61,7 @@ co_occurrence = aml_df[GENES].T.dot(aml_df[GENES])
 
 This matrix counts how many patients carry both mutation A and mutation B.
 
-
+---
 
 
 Why use a threshold (e.g. >80 patients)?
@@ -72,9 +74,9 @@ Thresholding reduces noise and improves interpretability
 
 Trade-off: rare but real relationships may be missed — this is intentional to focus on dominant AML biology.
 
+---
 
-
-2. Automatic Mutation Community Detection
+2. **Automatic Mutation Community Detection**
 
 Which mutations tend to cluster together as a group across the entire dataset?
 
@@ -101,6 +103,8 @@ These communities emerge automatically, without predefined labels — showing th
 
 
 ![Alt text describing the image](https://github.com/Rich455/AML-Genomic-Subtyping-with-Graphs-Causality/blob/main/Modules..png)
+
+---
 
 
 
@@ -129,6 +133,8 @@ This network accurately recapitulates the major molecular subclasses of AML as d
 
 ![Alt text describing the image](https://github.com/Rich455/AML-Genomic-Subtyping-with-Graphs-Causality/blob/main/Significant%20Co-occurrence%20Network%20of%20Gene%20Mutations.png)
 
+---
+
 
 
 
@@ -136,13 +142,9 @@ This network accurately recapitulates the major molecular subclasses of AML as d
 
 ![Alt text describing the image](https://github.com/Rich455/AML-Genomic-Subtyping-with-Graphs-Causality/blob/main/Colored%20Co%20-occurrence.png)
 
-⚠️ Limitations
+---
 
-Cross-sectional data → associations, not true temporal causality
 
-Thresholding may miss rare subtypes
-
-Simulated dataset used for demonstration
 
 
 
@@ -156,6 +158,8 @@ TP53 → Complex_Karyotype (OR ≈ 10.5x) — if TP53 is mutated, complex karyot
 NPM1 ↔ FLT3_ITD ↔ DNMT3A (OR ~8–9x) — classic triple mutant AML (favorable/intermediate risk).
 Splicing factors (SRSF2 ↔ U2AF1 ↔ ASXL1 ↔ RUNX1) — strong cluster (OR ~6–9x).
 Weaker pairs (e.g., IDH1 ↔ NPM1, OR ~1.3–1.4x) — still positive but less strong.
+
+---
 
 
 Biological Implications
@@ -177,7 +181,15 @@ Calculate coefficient (log-odds) and odds ratio (exp(coef)).
 Keep if positive (>0) — meaning co-occurrence.
 Add Fisher's p-value for reference.
 Sort by strength and print all results.
-
+---
 
 ![Alt text describing the image](https://github.com/Rich455/AML-Genomic-Subtyping-with-Graphs-Causality/blob/main/Causal%20Strength.png)
+
+⚠️ Limitations
+
+Cross-sectional data → associations, not true temporal causality
+
+Thresholding may miss rare subtypes
+
+Simulated dataset used for demonstration
 
