@@ -5,7 +5,7 @@ This project explores acute myeloid leukemia (AML) genomic subtypes using a grap
 “Machine learning integrates genomic signatures for subclassification beyond primary and secondary acute myeloid leukemia”
 Blood (2021) https://ashpublications.org/blood/article-abstract/138/19/1885/476049
 
-Instead of using traditional supervised classifiers alone, this project takes a network-driven perspective to understand how mutations co-occur, cluster, and define biological AML subtypes.
+Instead of using traditional supervised classifiers alone, this project takes a network-driven perspective to understand common co-occurence of mutation in AML.
 
 ---
 
@@ -18,9 +18,9 @@ AML is not driven by single mutations, but by combinations of cooperating mutati
 
 This project answers three key questions:
 
-Which mutations tend to appear together in the same patients?
+Which pair mutations (co-occurence)tend to appear together in the same patients? 
 
-Can we automatically identify mutation communities (subtypes)?
+Can we automatically identify mutation communities (can be one gene mutation or more than one)?
 
 Which mutations show strong positive or negative (exclusive) relationships?
 
@@ -40,7 +40,7 @@ NPM1, FLT3-ITD, DNMT3A
 
 RUNX1, ASXL1, SRSF2, U2AF1
 
-TP53, Complex Karyotype
+TP53, Complex Karyotype(−5/del(5q), −7/del(7q),−17/del(17p))
 
 IDH1, IDH2
 
@@ -53,6 +53,7 @@ Data are simulated for methodological demonstration, not direct clinical inferen
 
 
 **1. Co-occurrence Network (Graph-Based View)**
+
 What does the graph represent?
 
 Nodes (dots) → Gene mutations
@@ -108,7 +109,7 @@ These communities emerge automatically, without predefined labels — showing th
 ---
 
 
-
+Image  01
 
 ![Alt text describing the image](https://github.com/Rich455/AML-Genomic-Subtyping-with-Graphs-Causality/blob/main/Modules..png)
 
@@ -142,7 +143,7 @@ This network accurately recapitulates the major molecular subclasses of AML as d
 
 ---
 
-
+Image 02
 
 ![Alt text describing the image](https://github.com/Rich455/AML-Genomic-Subtyping-with-Graphs-Causality/blob/main/Significant%20Co-occurrence%20Network%20of%20Gene%20Mutations.png)
 
@@ -151,6 +152,7 @@ This network accurately recapitulates the major molecular subclasses of AML as d
 
 
 
+Image 03
 
 
 ![Alt text describing the image](https://github.com/Rich455/AML-Genomic-Subtyping-with-Graphs-Causality/blob/main/Colored%20Co%20-occurrence.png)
@@ -203,6 +205,9 @@ Reverse: Predict src from tgt.
 
 
 ---
+
+
+Image 04
 
 ![Alt text describing the image](https://github.com/Rich455/AML-Genomic-Subtyping-with-Graphs-Causality/blob/main/Causal%20Strength.png)
 
