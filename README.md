@@ -50,6 +50,7 @@ CEBPA (biallelic)
 Data are simulated for methodological demonstration, not direct clinical inference.
 
 
+
 Image 01
 
 
@@ -90,7 +91,10 @@ Thresholding reduces noise and improves interpretability
 
 Trade-off: rare but real relationships may be missed-this is intentional to focus on dominant AML biology.
 
+
+
 Image 02
+
 
 
 
@@ -126,13 +130,18 @@ Module 3
 Isolated metabolic subtype
 (IDH1)
 
-These communities emerge automatically, without predefined labels — showing that graph structure alone recovers known AML subtypes.
 ---
 
 
-Image  01
+Image  03
 
-![Alt text describing the image](https://github.com/Rich455/AML-Genomic-Subtyping-with-Graphs-Causality/blob/main/Modules..png)
+
+
+
+
+![Alt text describing the image](https://raw.githubusercontent.com/Rich455/AML-Genomic-Subtyping-with-Graphs-Causality/main/Module%20-Communities.png)
+
+
 
 ---
 
