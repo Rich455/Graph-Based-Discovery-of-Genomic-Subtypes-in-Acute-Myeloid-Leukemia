@@ -114,21 +114,21 @@ Which mutations tend to cluster together as a group across the entire dataset?
 
 To identify groups of mutations that tend to appear together, we applied modularity-based community detection:
 
-communities = greedy_modularity_communities(G)
+Louvain community algorthim which much better cluster and produce more stable community. 
 
 Resulting mutation communities:
 
+Module 0
+('NPM1', 'FLT3_ITD', 'DNMT3A', 'IDH2', 'CEBPA_biallelic')
+
 Module 1
-Core AML signaling / epigenetic mutations
-(NPM1, FLT3-ITD, DNMT3A, IDH2, RUNX1, splicing genes)
+('RUNX1', 'ASXL1', 'SRSF2', 'U2AF1')
 
 Module 2
-Adverse-risk AML
-(TP53, Complex Karyotype, ASXL1)
+('TP53', 'Complex_Karyotype')
 
 Module 3
-Isolated metabolic subtype
-(IDH1)
+('IDH1')
 
 ---
 
@@ -138,8 +138,8 @@ Image  03
 
 
 
+![Alt text describing the image](https://raw.githubusercontent.com/Rich455/AML-Genomic-Subtyping-with-Graphs-Causality/main/Modules.png)
 
-![Alt text describing the image](https://raw.githubusercontent.com/Rich455/AML-Genomic-Subtyping-with-Graphs-Causality/main/Module%20-Communities.png)
 
 
 
