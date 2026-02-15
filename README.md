@@ -79,7 +79,7 @@ Larger counts are more biologically meaningful
 
 Thresholding reduces noise and improves interpretability
 
-Trade-off: rare but real relationships may be missed — this is intentional to focus on dominant AML biology.
+Trade-off: rare but real relationships may be missed-this is intentional to focus on dominant AML biology.
 
 ---
 
