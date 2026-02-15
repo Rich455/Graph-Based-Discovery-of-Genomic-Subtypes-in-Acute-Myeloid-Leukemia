@@ -90,6 +90,16 @@ Thresholding reduces noise and improves interpretability
 
 Trade-off: rare but real relationships may be missed-this is intentional to focus on dominant AML biology.
 
+Image 02
+
+
+![Alt text describing the image](https://raw.githubusercontent.com/Rich455/AML-Genomic-Subtyping-with-Graphs-Causality/main/Co-occurrence%20table%20.png)
+
+
+
+
+
+
 ---
 
 **2. Automatic Mutation Community Detection**
@@ -154,7 +164,6 @@ This network accurately recapitulates the major molecular subclasses of AML as d
 
 Image 02
 
-![Alt text describing the image](https://github.com/Rich455/AML-Genomic-Subtyping-with-Graphs-Causality/blob/main/Significant%20Co-occurrence%20Network%20of%20Gene%20Mutations.png)
 
 ---
 
