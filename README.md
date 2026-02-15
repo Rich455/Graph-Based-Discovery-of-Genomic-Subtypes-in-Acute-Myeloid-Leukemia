@@ -49,6 +49,15 @@ CEBPA (biallelic)
 
 Data are simulated for methodological demonstration, not direct clinical inference.
 
+
+Image 01
+
+
+
+![Alt text describing the image](https://github.com/Rich455/AML-Genomic-Subtyping-with-Graphs-Causality/blob/main/Dataset%20from%20excel.png)
+
+
+
 ---
 
 
