@@ -13,6 +13,8 @@ from networkx.algorithms.community import greedy_modularity_communities
 
 
 
+
+
 # 1. LOAD REAL AML DATA (FROM EXCEL)
 
 
@@ -61,6 +63,11 @@ for i in range(len(GENES)):
             G.add_edge(GENES[i], GENES[j],
                        weight=co_occurrence.iloc[i, j])
 
+
+
+
+
+
 #Can we automatically find groups of mutations that tend to appear together in the same patients
 
 import networkx as nx
@@ -91,6 +98,12 @@ for mod, genes in modules.items():
 print("\n")
 print("Co-occurrence matrix (number of patients where both mutations appear):")
 print(co_occurrence)
+
+
+
+
+
+
 
 
 import matplotlib.pyplot as plt
