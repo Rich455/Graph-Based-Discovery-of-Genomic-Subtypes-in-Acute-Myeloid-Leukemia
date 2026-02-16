@@ -184,7 +184,6 @@ Graph-based analysis recovers clinically recognized AML classes without predefin
 
 Disease structure emerges naturally from genomic relationships.
 
-This framework is exploratory and descriptive — it clusters mutation patterns but does not perform patient-level prediction or clinical classification.
 
 
 This network accurately recapitulates the major molecular subclasses of AML as defined in current clinical guidelines (ELN 2022, ICC).
