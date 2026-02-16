@@ -61,209 +61,116 @@ for i in range(len(GENES)):
             G.add_edge(GENES[i], GENES[j],
                        weight=co_occurrence.iloc[i, j])
 
-
 #Can we automatically find groups of mutations that tend to appear together in the same patients
 
-communities = greedy_modularity_communities(G)
+import networkx as nx
+import community as community_louvain  # from python-louvain
 
-print("\n--- Mutation Communities ---")
-for i, c in enumerate(communities):
-    print(f"Module {i+1}: {list(c)}")
-    print("\n")
-    
-#------------------------    
-    
-# Show the raw co-occurrence numbers
 
+# Run Louvain on the weighted graph
+partition = community_louvain.best_partition(G, weight='weight')
+
+# partition is a dict: {node: module_id}
+print("Louvain communities:")
+for node, module in partition.items():
+    print(f"{node}: Module {module}")
+
+from collections import defaultdict
+
+modules = defaultdict(list)
+for gene, mod in partition.items():
+    modules[mod].append(gene)
+
+print("\nModules (Louvain):")
+for mod, genes in modules.items():
+    print(f"Module {mod}: {genes}")
+    
+    
+# Show the raw co-occurrence numbers 
+
+print("\n")
 print("Co-occurrence matrix (number of patients where both mutations appear):")
 print(co_occurrence)
-
-# Optional: only show pairs that co-occur frequently (e.g., > 100 patients)
-threshold = 80
-significant_pairs = []
-
-for i in range(len(GENES)):
-    for j in range(i+1, len(GENES)):
-        count = co_occurrence.iloc[i,j]
-        if count > threshold:
-            significant_pairs.append((GENES[i], GENES[j], count))
-
-# Convert to DataFrame for readability
-significant_df = pd.DataFrame(significant_pairs, columns=["Gene1", "Gene2", "Co-occurrence"])
-significant_df = significant_df.sort_values(by="Co-occurrence", ascending=False)
-
-print("\nSignificant co-occurring mutation pairs:")
-print(significant_df)
-
-
 
 
 import matplotlib.pyplot as plt
 import networkx as nx
 import matplotlib.patches as mpatches
 
-# Your biological color mapping
-color_map = {
-    'NPM1': 'skyblue',
-    'FLT3_ITD': 'skyblue',
-    'DNMT3A': 'skyblue',
-    'IDH1': 'skyblue',
-    'IDH2': 'skyblue',
-    
-    'RUNX1': 'lightgreen',
-    'SRSF2': 'lightgreen',
-    'U2AF1': 'lightgreen',
-    'ASXL1': 'lightgreen',
-    
-    'TP53': 'salmon',
-    'Complex_Karyotype': 'salmon',
-    
-    'CEBPA_biallelic': 'violet'
+# Colors for each Louvain module
+module_colors = {
+    0: "skyblue",
+    1: "lightgreen",
+    2: "salmon",
+    3: "violet"
 }
 
-# Node colors with fallback
-node_colors = [color_map.get(g, 'lightgray') for g in G.nodes()]
+# Node colors based on module assignment
+node_colors = [module_colors[partition[g]] for g in G.nodes()]
 
-# Edge widths scaled – thinner lines
+# Label colors also match module colors
+label_colors = {g: module_colors[partition[g]] for g in G.nodes()}
+
+# Edge widths scaled
 edges = G.edges()
 edge_weights = [G[u][v]['weight'] for u, v in edges]
-scaled_widths = [w / 20 for w in edge_weights]  # thinner than before (/12 → /20)
+scaled_widths = [w / 20 for w in edge_weights]
 
-# Layout with good spacing
+# Layout
 pos = nx.spring_layout(G, seed=42, k=2.5, iterations=100)
 
-# Plot
 plt.figure(figsize=(26, 22))
 
 # Draw nodes
-nx.draw_networkx_nodes(G, pos,
-                       node_color=node_colors,
-                       node_size=5500,
-                       edgecolors='black',
-                       linewidths=2.5)
+nx.draw_networkx_nodes(
+    G, pos,
+    node_color=node_colors,
+    node_size=5500,
+    edgecolors='black',
+    linewidths=2.5
+)
 
-# Draw labels
-nx.draw_networkx_labels(G, pos,
-                        font_size=18,
-                        font_weight='bold',
-                        font_color='black')
+# Draw labels with module‑matching colors
+nx.draw_networkx_labels(
+    G, pos,
+    font_size=18,
+    font_weight='bold',
+    font_color='black'
+)
 
-# Draw edges: black, thinner, with smaller arrowheads
-nx.draw_networkx_edges(G, pos,
-                       width=scaled_widths,
-                       alpha=0.9,
-                       edge_color='black',          # ← changed to black
-                       arrows=True,
-                       arrowsize=15,                # smaller arrowheads
-                       arrowstyle='-|> ',
-                       connectionstyle="arc3,rad=0.1")  # slight curve
+# Draw edges
+nx.draw_networkx_edges(
+    G, pos,
+    width=scaled_widths,
+    alpha=0.9,
+    edge_color='black',
+    arrows=True,
+    arrowsize=15,
+    arrowstyle='-|> ',
+    connectionstyle="arc3,rad=0.1"
+)
 
-# Legend
+# Legend for modules
 legend_patches = [
-    mpatches.Patch(color='skyblue', label='Class I/II-like (NPM1, FLT3-ITD, DNMT3A, IDH1/2)'),
-    mpatches.Patch(color='lightgreen', label='Splicing / Transcription (RUNX1, SRSF2, U2AF1, ASXL1)'),
-    mpatches.Patch(color='salmon', label='Adverse risk (TP53, Complex Karyotype)'),
-    mpatches.Patch(color='violet', label='CEBPA biallelic')
-   
+    mpatches.Patch(color='skyblue', label='Module 0'),
+    mpatches.Patch(color='lightgreen', label='Module 1'),
+    mpatches.Patch(color='salmon', label='Module 2'),
+    mpatches.Patch(color='violet', label='Module 3')
 ]
 
-plt.legend(handles=legend_patches,
-           fontsize=16,
-           loc='upper left',
-           bbox_to_anchor=(0, 1),
-           frameon=True,
-           fancybox=True,
-           shadow=True)
+plt.legend(
+    handles=legend_patches,
+    fontsize=16,
+    loc='upper left',
+    bbox_to_anchor=(0, 1),
+    frameon=True,
+    fancybox=True,
+    shadow=True
+)
 
-# Title
-plt.title("AML Mutation Co-occurrence Network\n"
-          "Edges = Co-occurrence in >80 patients | Black arrows indicate connections\n"
-          "Node colors = Biological / Prognostic groups",
+plt.title("AML Mutation Co-occurrence Network and Communities\n",
           fontsize=22, pad=40)
 
 plt.axis('off')
 plt.tight_layout()
 plt.show()
-
-
-
-print("\n[✓] Running improved causal discovery (only positive & significant)...")
-
-causal_edges = []
-
-# Number of gene pairs tested — for statistical correction
-n_tests = len(list(itertools.combinations(GENES, 2)))
-bonferroni_alpha = 0.05 / n_tests if n_tests > 0 else 0.05
-
-for src, tgt in itertools.combinations(GENES, 2):
-    # Skip rare mutations
-    if aml_df[tgt].sum() < 20:
-        continue
-    
-    X = aml_df[[src]].values
-    y = aml_df[tgt].values
-    
-    model = LogisticRegression(solver="liblinear")
-    model.fit(X, y)
-    coef = model.coef_[0][0]
-    
-    # Only keep positive and strong coefficients
-    # 0.6 coA increases the odds of mutation B by ~82%
-    if coef <= 0.6:
-        continue
-    
-    # Check statistical significance with Fisher's exact test
-    table = pd.crosstab(aml_df[src], aml_df[tgt])
-    _, p_value = fisher_exact(table)
-    
-    # Only keep if significant (after correction)
-    if p_value < bonferroni_alpha:
-        causal_edges.append((src, tgt, coef, p_value))
-
-print("\n--- Significant Positive Relationships (Co-occurrence Only) ---")
-for s, t, w, p in causal_edges:
-    print(f"{s} → {t} (strength={w:.2f}, p-value={p:.2e})")
-
-# --- Beautiful visualization: ONLY green arrows, significant only ---
-if causal_edges:
-    G = nx.DiGraph()
-    
-    for src, tgt, coef, p in causal_edges:
-        thickness = max(2, coef * 4)  # Thicker for stronger influence
-        label = f"{coef:.2f}\np={p:.1e}"
-        G.add_edge(src, tgt, weight=thickness, label=label)
-    
-    # Good spacing
-    pos = nx.spring_layout(G, k=6, iterations=100, seed=42)
-    
-    plt.figure(figsize=(15, 11))
-    
-    # Light green nodes for positive feel
-    nx.draw_networkx_nodes(G, pos, node_color='lightgreen', node_size=4500,
-                           alpha=0.95, linewidths=4, edgecolors='darkgreen')
-    nx.draw_networkx_labels(G, pos, font_size=15, font_weight='bold')
-    
-    # Strong green arrows only
-    edges = G.edges()
-    weights = [G[u][v]['weight'] for u, v in edges]
-    
-    nx.draw_networkx_edges(G, pos, edgelist=edges,
-                           edge_color='green', width=weights,
-                           arrows=True, arrowsize=45, arrowstyle='->',
-                           connectionstyle="arc3,rad=0.15")  # Nice curve
-    
-    # Show strength + p-value on edges
-    edge_labels = nx.get_edge_attributes(G, 'label')
-    nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels,
-                                 font_color='darkgreen', font_size=12)
-    
-    plt.title("Significant Co-occurrence Network of Gene Mutations\n"
-              "Green Arrow → Mutation A increases chance of Mutation B\n"
-              "(Only strong & statistically significant positive links shown)",
-              fontsize=18, pad=30)
-    plt.axis('off')
-    plt.tight_layout()
-    plt.show()
-
-else:
-    print("No significant positive co-occurrence relationships found with current threshold.")
