@@ -156,17 +156,25 @@ Image  03
 Genes: NPM1, FLT3-ITD, DNMT3A, IDH2, CEBPA_biallelic
 Most common AML subtype, characterized by cooperation between epigenetic mutations, signaling activation, and impaired differentiation. Corresponds to NPM1-mutated AML in modern classifications.
 
+---
+
 **Module 1 — Secondary / Myelodysplasia-Related AML**
 Genes: RUNX1, ASXL1, SRSF2, U2AF1
 Splicing-factor and chromatin-regulator mutations typical of AML evolving from myelodysplastic syndromes (MDS), reflecting abnormal RNA processing and differentiation defects.
+
+---
 
 **Module 2 — TP53 / Complex Karyotype AML (Adverse Risk)**
 Genes: TP53, Complex_Karyotype
 Highly aggressive subtype driven by genomic instability and chromosomal catastrophe, commonly associated with poor prognosis and therapy resistance.
 
+---
+
 **Module 3 — IDH1 Metabolic Subtype**
 Genes: IDH1
 Relatively independent mutation module suggesting a metabolism-driven leukemogenic pathway through altered DNA methylation (2-HG production).
+
+---
 
 **Biological Insight**
 
@@ -180,6 +188,8 @@ This framework is exploratory and descriptive — it clusters mutation patterns 
 
 
 This network accurately recapitulates the major molecular subclasses of AML as defined in current clinical guidelines (ELN 2022, ICC).
+
+---
 
 
 
