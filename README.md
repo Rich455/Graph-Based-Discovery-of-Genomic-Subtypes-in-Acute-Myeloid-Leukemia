@@ -167,7 +167,6 @@ This directed graph shows **strong and statistically significant positive co-occ
 - **CEBPA / IDH2**:  
   Strong bidirectional link between biallelic CEBPA mutations and IDH2.
 
-Green arrows indicate that the presence of one mutation significantly increases the likelihood of the other. Arrow thickness and edge labels reflect association strength (log-odds coefficient) and p-value.
 
 This network accurately recapitulates the major molecular subclasses of AML as defined in current clinical guidelines (ELN 2022, ICC).
 
