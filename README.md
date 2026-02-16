@@ -170,6 +170,8 @@ This directed graph shows **strong and statistically significant positive co-occ
 
 This network accurately recapitulates the major molecular subclasses of AML as defined in current clinical guidelines (ELN 2022, ICC).
 
+
+![Alt text describing the image](https://raw.githubusercontent.com/Rich455/AML-Genomic-Subtyping-with-Graphs-Causality/main/Graph%20of%20Co-occurence%20and%20Communities.png)
 ---
 
 
