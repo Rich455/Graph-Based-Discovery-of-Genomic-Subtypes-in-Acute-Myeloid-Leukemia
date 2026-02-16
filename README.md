@@ -168,7 +168,7 @@ eukemia (AML), based on logistic regression and Fisher's exact test (Bonferroni-
 - **Adverse-risk group**:  
   TP53 ↔ Complex_Karyotype — almost inseparable, reflecting genomic catastrophe driven by loss of p53 function.
 
-- **:  
+- **CEBPA / IDH2**: 
   Strong bidirectional link between biallelic CEBPA mutations and IDH2.
 
 
@@ -182,6 +182,36 @@ Image 04
 
 ![Alt text describing the image](https://raw.githubusercontent.com/Rich455/AML-Genomic-Subtyping-with-Graphs-Causality/main/Graph%20of%20Co-occurence%20and%20Communities.png)
 ---
+
+
+**Strengths of the Approach**
+
+Graph-based view: Highlights cooperating mutations rather than analyzing single mutations independently.
+
+Community detection: Automatically identifies clusters of mutations that co-occur across patients.
+
+Biologically interpretable: Strong edges represent dominant AML biology, reflecting clinically relevant subtypes.
+
+Flexible: Can be applied to any mutation matrix for exploratory analysis.
+
+
+**Weaknesses / Limitations**
+
+Not predictive: This method clusters mutations and identifies relationships, but cannot predict patient outcomes or classify new patients.
+
+Threshold dependency: Low-frequency but biologically important mutations may be excluded due to edge thresholding.
+
+Data limitations: Simulated dataset is used here for demonstration; real clinical inference would require larger, fully curated datasets.
+
+
+
+**References**
+
+Papaemmanuil E, et al. Blood (2021). Machine learning integrates genomic signatures for subclassification beyond primary and secondary AML
+
+ELN 2022 Clinical Guidelines for AML
+
+ICC 2022 AML Classification
 
 
 
