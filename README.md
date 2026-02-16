@@ -1,4 +1,4 @@
-# AML-Genomic-Subtyping-with-Graphs-Causality
+# Graph-Based Discovery of Genomic Subtypes in Acute Myeloid Leukemia Using Mutation Co-Occurrence Networks
 
 This project explores acute myeloid leukemia (AML) genomic subtypes using a graph-based machine learning approach, inspired by the paper:
 
