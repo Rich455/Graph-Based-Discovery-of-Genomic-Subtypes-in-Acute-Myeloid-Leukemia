@@ -129,6 +129,8 @@ Module 2
 Module 3
 ('IDH1')
 
+Each module represents a genomic cooperation pattern, which closely mirrors known biological subtypes of Acute Myeloid Leukemia (AML).
+
 ---
 
 
@@ -147,29 +149,34 @@ Image  03
 
 
 
- **4. AML Mutation Co-occurrence Network**
+ **4. AML Mutation Co-occurrence Network and Communities**
 
 
-This directed graph shows **strong and statistically significant positive co-occurrences** among recurrent mutations in Acute Myeloid L
+**Module 0 — NPM1-Driven / Normal-Karyotype AML**
+Genes: NPM1, FLT3-ITD, DNMT3A, IDH2, CEBPA_biallelic
+Most common AML subtype, characterized by cooperation between epigenetic mutations, signaling activation, and impaired differentiation. Corresponds to NPM1-mutated AML in modern classifications.
 
-eukemia (AML), based on logistic regression and Fisher's exact test (Bonferroni-corrected).
+**Module 1 — Secondary / Myelodysplasia-Related AML**
+Genes: RUNX1, ASXL1, SRSF2, U2AF1
+Splicing-factor and chromatin-regulator mutations typical of AML evolving from myelodysplastic syndromes (MDS), reflecting abnormal RNA processing and differentiation defects.
 
+**Module 2 — TP53 / Complex Karyotype AML (Adverse Risk)**
+Genes: TP53, Complex_Karyotype
+Highly aggressive subtype driven by genomic instability and chromosomal catastrophe, commonly associated with poor prognosis and therapy resistance.
 
+**Module 3 — IDH1 Metabolic Subtype**
+Genes: IDH1
+Relatively independent mutation module suggesting a metabolism-driven leukemogenic pathway through altered DNA methylation (2-HG production).
 
+**Biological Insight**
 
-**Key findings** (only the strongest links are displayed):
+AML subtypes arise from cooperating mutation programs, not single mutations.
 
-- **NPM1-centered cluster** (classic normal-karyotype AML):  
-  NPM1 ↔ FLT3-ITD ↔ DNMT3A - CEBPA_biallelic form a tightly cooperating trio (highest co-occurrence rates).
+Graph-based analysis recovers clinically recognized AML classes without predefined labels.
 
-- **Splicing factor / myeloid neoplasia cluster**:  
-  SRSF2 ↔ U2AF1 ↔ ASXL1 ↔ RUNX1 frequently co-occur, defining a distinct subgroup often with myelodysplastic features.
+Disease structure emerges naturally from genomic relationships.
 
-- **Adverse-risk group**:  
-  TP53 ↔ Complex_Karyotype — almost inseparable, reflecting genomic catastrophe driven by loss of p53 function.
-
-- **CEBPA / IDH2**: 
-  Strong bidirectional link between biallelic CEBPA mutations and IDH2.
+This framework is exploratory and descriptive — it clusters mutation patterns but does not perform patient-level prediction or clinical classification.
 
 
 This network accurately recapitulates the major molecular subclasses of AML as defined in current clinical guidelines (ELN 2022, ICC).
