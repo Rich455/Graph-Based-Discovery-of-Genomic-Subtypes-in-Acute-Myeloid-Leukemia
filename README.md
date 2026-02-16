@@ -5,7 +5,7 @@ This project explores acute myeloid leukemia (AML) genomic subtypes using a grap
 “Machine learning integrates genomic signatures for subclassification beyond primary and secondary acute myeloid leukemia”
 Blood (2021) https://ashpublications.org/blood/article-abstract/138/19/1885/476049
 
-Instead of using traditional supervised classifiers alone, this project takes a network-driven perspective to understand common co-occurence of mutation in AML.
+Unlike traditional supervised classifiers, this project takes a network-driven perspective, focusing on co-occurrence of mutations and mutation communities to better understand AML heterogeneity.
 
 ---
 
@@ -22,7 +22,6 @@ Which pair mutations (co-occurence)tend to appear together in the same patients?
 
 Can we automatically identify mutation communities (can be one gene mutation or more than one)?
 
-Which mutations show strong positive or negative (exclusive) relationships?
 
 ---
 
@@ -151,12 +150,17 @@ Image  03
  **4. AML Mutation Co-occurrence Network**
 
 
-This directed graph shows **strong and statistically significant positive co-occurrences** among recurrent mutations in Acute Myeloid Leukemia (AML), based on logistic regression and Fisher's exact test (Bonferroni-corrected).
+This directed graph shows **strong and statistically significant positive co-occurrences** among recurrent mutations in Acute Myeloid L
+
+eukemia (AML), based on logistic regression and Fisher's exact test (Bonferroni-corrected).
+
+
+
 
 **Key findings** (only the strongest links are displayed):
 
 - **NPM1-centered cluster** (classic normal-karyotype AML):  
-  NPM1 ↔ FLT3-ITD ↔ DNMT3A form a tightly cooperating trio (highest co-occurrence rates).
+  NPM1 ↔ FLT3-ITD ↔ DNMT3A - CEBPA_biallelic form a tightly cooperating trio (highest co-occurrence rates).
 
 - **Splicing factor / myeloid neoplasia cluster**:  
   SRSF2 ↔ U2AF1 ↔ ASXL1 ↔ RUNX1 frequently co-occur, defining a distinct subgroup often with myelodysplastic features.
@@ -164,11 +168,16 @@ This directed graph shows **strong and statistically significant positive co-occ
 - **Adverse-risk group**:  
   TP53 ↔ Complex_Karyotype — almost inseparable, reflecting genomic catastrophe driven by loss of p53 function.
 
-- **CEBPA / IDH2**:  
+- **:  
   Strong bidirectional link between biallelic CEBPA mutations and IDH2.
 
 
 This network accurately recapitulates the major molecular subclasses of AML as defined in current clinical guidelines (ELN 2022, ICC).
+
+
+
+Image 04
+
 
 
 ![Alt text describing the image](https://raw.githubusercontent.com/Rich455/AML-Genomic-Subtyping-with-Graphs-Causality/main/Graph%20of%20Co-occurence%20and%20Communities.png)
