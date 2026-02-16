@@ -184,7 +184,7 @@ Image 04
 ---
 
 
-**Strengths of the Approach**
+**5. Strengths of the Approach**
 
 Graph-based view: Highlights cooperating mutations rather than analyzing single mutations independently.
 
@@ -193,27 +193,31 @@ Community detection: Automatically identifies clusters of mutations that co-occu
 Biologically interpretable: Strong edges represent dominant AML biology, reflecting clinically relevant subtypes.
 
 Flexible: Can be applied to any mutation matrix for exploratory analysis.
+
 ---
 
 
-**Weaknesses / Limitations**
+**6. Weaknesses / Limitations**
 
 Not predictive: This method clusters mutations and identifies relationships, but cannot predict patient outcomes or classify new patients.
 
 Threshold dependency: Low-frequency but biologically important mutations may be excluded due to edge thresholding.
 
 Data limitations: Simulated dataset is used here for demonstration; real clinical inference would require larger, fully curated datasets.
+
+
 ---
 
 
 
-**References**
+**7.  References**
 
 Papaemmanuil E, et al. Blood (2021). Machine learning integrates genomic signatures for subclassification beyond primary and secondary AML
 
 ELN 2022 Clinical Guidelines for AML
 
 ICC 2022 AML Classification
+
 ---
 
 
