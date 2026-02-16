@@ -193,6 +193,7 @@ Community detection: Automatically identifies clusters of mutations that co-occu
 Biologically interpretable: Strong edges represent dominant AML biology, reflecting clinically relevant subtypes.
 
 Flexible: Can be applied to any mutation matrix for exploratory analysis.
+---
 
 
 **Weaknesses / Limitations**
@@ -202,6 +203,7 @@ Not predictive: This method clusters mutations and identifies relationships, but
 Threshold dependency: Low-frequency but biologically important mutations may be excluded due to edge thresholding.
 
 Data limitations: Simulated dataset is used here for demonstration; real clinical inference would require larger, fully curated datasets.
+---
 
 
 
@@ -212,6 +214,7 @@ Papaemmanuil E, et al. Blood (2021). Machine learning integrates genomic signatu
 ELN 2022 Clinical Guidelines for AML
 
 ICC 2022 AML Classification
+---
 
 
 
